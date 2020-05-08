@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <style>
+        body{
+            font-family: 'Roboto', sans-serif;
+        }
+        #loginBox{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            min-height: 200px; 
+            text-align: center;
+
+        }
+        #loginBox img{
+            margin: 0 auto;
+            display: block;
+            margin-bottom: 20px;
+        }
+        form{
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        form button{
+            margin-top: 10px;
+        }
+        .slider.round {
+            border-radius: 34px;
+          }
+          
+          .slider.round:before {
+            border-radius: 50%;
+          }
+        button{
+            width: 80%;
+            background: #e02041;
+            border: 0;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: bold;
+            margin-top: 16px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 60px;
+            transition: filter 0.5s;
+        }
+        button:hover{
+            filter: brightness(90%);
+        }
+    </style>
+</head>
+<body>
+    <div id="loginBox">
+        <img class="mb-4" src="{% static 'logo.svg' %}">
+        <form class="form-signin" method="POST">{% csrf_token %}            
+            {% for field in form %}
+                {{field.label}}<br>
+                {{field}}<br>
+            {% endfor %}
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+        #detailPage{
+            background-color: yellowgreen;
+            display: grid;
+            justify-content: left;
+            align-items: center;
+            padding: 10px;
+            
+            
+        }
+        #detailPage div{
+            margin: 8px;
+        }
+        
+        #title{
+            font-size: 50px;
+        }
+        
+    </style>
+    <div id="detailPage">
+        <div id=title>
+            {{case.title}}
+        </div>
+        <div id="relatedAccount">
+            by {{case.relatedAccount}}
+        </div>
+        <div id="date">
+            {{case.created_at}}
+        </div>
+        <div id="description">
+            {{case.description}}
+        </div>
+        <div id="contact">
+            Entre em contato com {{case.relatedAccount.username}} e ajude em {{case.title}}!<br>
+            Contato: {{case.relatedAccount.email}}
+        </div>
+    </div>
+{% endblock content %}

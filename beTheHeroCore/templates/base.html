@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,900;1,300&display=swap" rel="stylesheet">
+
+
+    
+    <style type="text/css">
+        *{
+            font-family: 'Roboto', sans-serif;
+            
+        }
+        body{
+            background-color:#f0f0f5;
+
+        }
+        header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+        main{
+            padding: 50px;
+        }
+        #logo {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #logo img{
+            height: 100%;
+            width: 100%;
+        }
+        #func{
+            width: 300px;
+            margin: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #func #logoutBtn{
+            margin-left: 10px;
+        }
+        #func #regBtn{
+            width: 80%;
+            background: #e02041;
+            border: 0;
+            border-radius: 8px;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            line-height: 40px;
+            transition: filter 0.5s;
+        }
+        #username{
+            margin: 10px;
+            font-size: medium;
+        }
+
+        button:hover{
+            filter: brightness(90%);
+        }
+        #case{
+            background-color:whitesmoke;
+            width: 300px;
+            border-radius: 10px;
+
+            margin: 10px;
+            padding: 20px;
+        }
+        #incidents{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction:row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .caseInfo{
+            font-family: 'Arial', sans-serif;
+            font-weight: 300;
+        }
+        #trashIcon{
+            display: flex;
+            float: right;
+            margin: 8px;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <div id="logo">
+                <a style="width: 60px;" href="{% url 'home' %}" ><img src="{% static 'logo.svg' %}" ></a>
+                <p id="username" >Welcome, {{request.user.username}}!</p>
+            </div>
+            <div id="func">
+                <a class="btn btn-primary" id="regBtn" role="button" href="{% url 'registerCase' %}">Register a new case</a>
+                <a id="logoutBtn" class="glyphicon glyphicon-log-out" href="{% url 'logoutAccount' %}" role="button">Logout</a>
+            </div>
+        </header>
+        <div>
+            {% block content %}
+                
+            {% endblock content %}
+        </div>
+    </main>
+</body>
+</html>

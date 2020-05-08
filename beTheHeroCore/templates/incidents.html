@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Registered Incidents</h1>
+        <div id="incidents">
+            {% for case in cases %}
+                <div id="case">
+
+                    <div id="incidentTitle">
+                        {% if request.user == case.relatedAccount %}
+                            <a href="{%url 'deleteCase' pk=case.pk%}" id="trashIcon" role="button" class="glyphicon glyphicon-trash"></a>
+                            <a href="{%url 'editCase' pk=case.pk%}" id="trashIcon" role="button" class="glyphicon glyphicon-pencil"></a>
+                            
+                            {% endif %}
+                            <p>Incident:</p>
+                        <p class="caseInfo">{{case.title}}</p>
+                    </div>
+                    <div>
+                        <p>Description:</p>
+                        <p class="caseInfo" >{{case.description}}</p>
+                    </div>
+                    <div>
+                        <p>Amount:</p>
+                        <p class="caseInfo" >R$ {{case.cost}}</p>
+                        <p>See more details <a href="{% url 'caseDetail' pk=case.pk %}" >here</a></p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+{% endblock content %}
